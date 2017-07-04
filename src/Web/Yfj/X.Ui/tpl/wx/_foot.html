@@ -1,0 +1,103 @@
+﻿<div class="fudong">
+    <ul>
+        <li class="no08"><a href="/wx/index.html">首页</a></li>
+        <li class="no09"><a href="/wx/goods/list.html">分类</a></li>
+        <li class="no011" style="position:relative;"><a href="/wx/user/cart.html">购物车</a><span class="ptc p$!ptc">$!ptc</span></li>
+        <li class="no012"><a href="/wx/user/index.html">我的</a></li>
+    </ul>
+</div>
+<div class="loading">正在加载中...</div>
+#if($iswx)
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '$!wx_appid', // 必填，公众号的唯一标识
+        timestamp: '$!wx_ts', // 必填，生成签名的时间戳
+        nonceStr: '$!wx_no', // 必填，生成签名的随机串
+        signature: '$!wx_sign',// 必填，签名，见附录1
+        jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+
+    sharedata = {};
+
+    wx.ready(function () {
+        set_share_data();
+        try {
+            wxready();
+        } catch (e) { }
+    });
+
+    function set_share_data() {
+        wx.onMenuShareAppMessage({
+            title: sharedata.title, // 分享标题
+            desc: sharedata.desc, // 分享描述
+            link: sharedata.link || document.location.href, // 分享链接
+            imgUrl: sharedata.img // 分享图标
+        });
+        wx.onMenuShareTimeline({
+            title: sharedata.title, // 分享标题
+            link: sharedata.link || document.location.href, // 分享链接
+            imgUrl: sharedata.img // 分享图标
+        });
+    }
+
+    wx.error(function (res) {
+        //alert(document.location.href+"<br/>$url");
+        //alert("$!wx_ts,$!wx_no,$!wx_sign,"+document.location.href);
+        //doapi("wx.newtk", null, function () {
+        //    document.location.reload();
+        //})
+    });
+
+</script>
+#end
+<script type="text/javascript">
+    function showloading(txt) {
+        $(".loading").text(txt || "正在加载中...");
+        $(".loading").show();
+    }
+    function hideloading() {
+        $(".loading").hide();
+    }
+    function doapi(api, ps, callback, showtip) {
+        if (showtip != false) showloading();
+        jQuery.post("/api/" + api, ps, function (d) {
+            if (showtip != false) hideloading();
+            if (!d.issucc) alert(d.msg);
+            if (callback) {
+                try {
+                    callback(d);
+                }
+                catch (e) {
+                    console.log(e.message);
+                }
+            }
+        }, "json");
+    }
+    function setcount(gid, ct) {
+        if (ct == 0) outcart(gid, 1);
+        else tocart(gid, ct);
+    }
+    function tocart(gid, val) {
+        doapi("wx.cart.pin", { gid: gid, count: val }, function (d) {
+            if (!d.issucc) return;
+            try {
+                cartchange(d.ct, d.gc, d.ps, gid, d.sel, d.shipfee);
+            } catch (e) { }
+        });
+    }
+    function outcart(gid, val, cf) {
+        if (cf != false) if (val == 1 && !confirm("是否要将此商品移出购物车？")) return;
+        doapi("wx.cart.pout", { gid: gid, del: val == 1 ? 1 : 0 }, function (d) {
+            if (!d.issucc) return;
+            try {
+                cartchange(d.ct, d.gc, d.ps, gid, d.sel, d.shipfee);
+            } catch (e) { }
+        });
+    }
+    if ("$!cu.user_id" && !"$!cu.tel" && document.location.href.indexOf("bind.html") < 0) {
+        if (confirm("您还未绑定手机号\n绑定手机号更方便我们提供服务哦，是否立即绑定？")) document.location.href = "/wx/bind.html";
+    }
+</script>

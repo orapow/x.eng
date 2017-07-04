@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    #parse("mgr/com/_head.html")
+    <title>文章编辑 - $cfg.name</title>
+    <link href="/plug/um/themes/default/css/umeditor.min.css" rel="stylesheet" />
+    <script src="/plug/um/umeditor.config.js"></script>
+    <script src="/plug/um/umeditor.min.js"></script>
+    <style type="text/css">
+        .edui-container { display: inline-block; vertical-align: top; }
+        #id_desc { width: 600px; height: 300px; }
+        .tab > .li { margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <span class="main">文章编辑</span> - <span class="sub">文章管理</span>
+    </div>
+    <div class="form">
+        <x:form api="mgr.article.save">
+            <input type="hidden" name="id" value="$!item.article_id" x-check="" />
+            <div class="tab" style="display:block">
+                <input type="hidden" name="cover" value="$!item.cover" x-check="" />
+                <x:text title="文章标题" def="$!item.title" name="topic" size="5" chk="no" />
+                <x:pick title="分类" src="url:/mgr/dict/select-article.cate.html" name="cate" count="1" def="$!{cate}" />
+                <x:text title="跳转" def="$!item.tourl" name="tourl" size="6" />
+                <x:text title="排序" def="$!item.sort" name="sort" size="2" />
+                <x:text title="详情" name="desc" tp="3" size="6" def="$!item.content" />
+            </div>
+            <div class="btns">
+                <button type="submit" class="btn btn-primary">
+                    <i class="icon-ok"></i>提交保存
+                </button>
+                <a class="btn" onclick="history.go(-1)">
+                    <i class="icon-reply"></i>返回上一页
+                </a>
+            </div>
+        </x:form>
+    </div>
+    <br />
+    <br />
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("form:eq(0)").xform({
+                callback: function (d) { document.location.href = '/mgr/article/list.html'; }
+            });
+
+        });
+
+        var um = UM.getEditor("id_desc");
+
+    </script>
+</body>
+</html>

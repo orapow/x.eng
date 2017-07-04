@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    #parse("mgr/com/_head.html")
+    <title>商城管理 - $cfg.name</title>
+    <base target="mainifrm" />
+    <style type="text/css">
+        iframe { margin: 0; padding: 0; border: 0; }
+        body { padding: 0; line-height: normal; overflow: hidden; margin: 0; }
+        .menu { background: none repeat scroll 0 0 #e8e8e8; color: #303030; text-align: right; border-bottom: 1px solid #3086c8; }
+        .menu .btn { color: #303030; padding: 10px 12px; font-size: 14px; }
+        .menu .btn i { margin-right: 5px; }
+        .menu .btn-link:hover, .btn-link:focus { background-color: none; text-decoration: none; }
+        .menu .btn-primary { color: white; }
+        .leftpan { float: left; border-right: 1px solid #3086c8; position: relative; }
+        .leftpan i { margin-right: 5px; text-indent: 0; }
+        .leftpan > ul { margin-left: 0; display: none; }
+        .leftpan ul li { display: block; }
+        .leftpan ul li .btn { border-top: 0; font-size: 12px; }
+        .leftpan > ul > li .btn { line-height: 20px; text-align: left; width: 100px; font-weight: bold; }
+        .leftpan > ul > li ul { margin-left: 0; }
+        .leftpan > ul > li ul li .btn { text-indent: 5px; font-weight: normal; }
+        .leftpan { width: 120px; overflow-y: auto; overflow-x: hidden; }
+        .leftpan ul li ul { display: none; }
+        .leftpan .arrow { position: absolute; height: 90px; width: 10px; top: 50%; right: -10px; background-color: red; }
+        .rightpan { margin-left: 121px; }
+        .sel_city { position: absolute; left: 110px; top: 5px; }
+        .sel_city ul { display: none; max-height: 400px; overflow-y: auto; list-style: none; padding: 5px; margin: 1px 0 0; text-align: center; background-color: white; z-index: 99; position: absolute; border: 1px solid #ccc; width: 90px; font-size: 14px; }
+        .sel_city ul li { padding: 0; margin: 0; line-height: 22px; cursor: pointer; }
+        .sel_city .btn { padding: 4px 12px; }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <span class="btn btn-link" style="float: left; padding: 4px;">
+            <img src="/img/logo.png" style="height: 32px;" />
+        </span>
+        <div class="sel_city">
+            #if($mg.city==62)
+            <span class="btn" onclick="showlayer()"><span>$cityname</span> <i class="icon-angle-down"></i></span>
+            <ul>
+                #foreach($c in $cities)
+                <li data-val="$c.value" onclick="setcity($c.value,'$c.name')">$c.name</li>
+                #end
+            </ul>
+            #else
+            <span class="btn">$cityname</span>
+            #end
+        </div>
+        <a class="btn btn-link btn-large m">
+            <i class="icon-desktop"></i>内容
+        </a><a class="btn btn-link btn-large m">
+            <i class="icon-bullhorn"></i>营销
+        </a><a class="btn btn-link btn-large m">
+            <i class="icon-user"></i>会员
+        </a><a class="btn btn-link btn-large m">
+            <i class="icon-cog"></i>系统
+        </a><a class="btn btn-link btn-large" href="main.html" style="border-left: 1px solid #3086c8;">
+            <i class="icon-user"></i>$!mg.Name
+        </a><span class="btn btn-large btn-warning" style="color: white; border: none;" onclick="dologout()">
+            <i class="icon-off" style="margin: 0;"></i>
+        </span>
+    </div>
+    <div class="leftpan">
+        <ul class="smenu"></ul>
+        <ul class="smenu">
+            <li>
+                <a class="btn m">
+                    <i class="icon-gift"></i>商品管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/goods/edit.html" class="btn">
+                            <i class="icon-angle-right"></i>新增商品
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/goods/list.html" class="btn">
+                            <i class="icon-angle-right"></i>商品列表
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/sale/list.html" class="btn">
+                            <i class="icon-angle-right"></i>抢购商品
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/cate/list-1.html" class="btn">
+                            <i class="icon-angle-right"></i>分类管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/brand/list.html" class="btn">
+                            <i class="icon-angle-right"></i>品牌管理
+                        </a>
+                    </li>
+                    <!--<li>
+                        <a href="/mgr/stand/list.html" class="btn">
+                            <i class="icon-angle-right"></i>规格管理
+                        </a>
+                    </li>-->
+                </ul>
+            </li>
+            <!--<li>
+                <a class="btn m">
+                    <i class="icon-gift"></i>优惠券管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/ticket/pub.html" class="btn">
+                            <i class="icon-angle-right"></i>发布优惠券
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ticket/list-1.html" class="btn">
+                            <i class="icon-angle-right"></i>待领取
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ticket/list-2.html" class="btn">
+                            <i class="icon-angle-right"></i>待消费
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ticket/list-3.html" class="btn">
+                            <i class="icon-angle-right"></i>已过期
+                        </a>
+                    </li>
+                </ul>
+            </li>-->
+            <li>
+                <a class="btn m">
+                    <i class="icon-book"></i>文章管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/article/edit.html" class="btn">
+                            <i class="icon-angle-right"></i>新增文章
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/article/list.html" class="btn">
+                            <i class="icon-angle-right"></i>全部文章
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/dict/list-article.cate-1.html" class="btn">
+                            <i class="icon-angle-right"></i>分类管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="btn m">
+                    <i class="icon-bullhorn"></i>广告管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/ads/edit.html" class="btn">
+                            <i class="icon-angle-right"></i>新增广告
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/ads/list.html" class="btn">
+                            <i class="icon-angle-right"></i>广告列表
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="smenu">
+            <li>
+                <a class="btn m">
+                    <i class="icon-user"></i>业务员管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/sman/list.html" class="btn">
+                            <i class="icon-angle-right"></i>业务员列表
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/sman/stati.html" class="btn">
+                            <i class="icon-angle-right"></i>业绩统计
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="btn m">
+                    <i class="icon-user"></i>配送员管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/sender/list.html" class="btn">
+                            <i class="icon-angle-right"></i>配送员列表
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="btn m">
+                    <i class="icon-shopping-cart"></i>订单管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/order/manual.html" class="btn">
+                            <i class="icon-angle-right"></i>手工下单
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/order/list-1.html" class="btn">
+                            <i class="icon-angle-right"></i>待付款
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/order/list-2.html" class="btn">
+                            <i class="icon-angle-right"></i>待确认
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/order/list-3.html" class="btn">
+                            <i class="icon-angle-right"></i>待发货
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/order/list-4.html" class="btn">
+                            <i class="icon-angle-right"></i>待收款
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/order/list-5.html" class="btn">
+                            <i class="icon-angle-right"></i>已完成
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/order/list.html" class="btn">
+                            <i class="icon-angle-right"></i>全部订单
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="btn m">
+                    <i class="icon-money"></i>退款管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/refund/list-1.html" class="btn">
+                            <i class="icon-angle-right"></i>待处理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/refund/list.html" class="btn">
+                            <i class="icon-angle-right"></i>已处理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="btn m">
+                    <i class="icon-bar-chart"></i>销售报表
+                </a>
+                <ul>
+                    <li>
+                        <a href="/system/dict/list-car_brand.html" class="btn">
+                            <i class="icon-angle-right"></i>本店报表
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/system/dict/list-car_brand.html" class="btn">
+                            <i class="icon-angle-right"></i>城市报表
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="smenu">
+            <li>
+                <a class="btn m">
+                    <i class="icon-group"></i>会员管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/user/list.html" class="btn">
+                            <i class="icon-angle-right"></i>会员列表
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/user/stati.html" class="btn">
+                            <i class="icon-angle-right"></i>会员统计
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="btn m">
+                    <i class="icon-money"></i>会员充值
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/deposit/manual.html" class="btn">
+                            <i class="icon-angle-right"></i>手动充值
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/deposit/list.html" class="btn">
+                            <i class="icon-angle-right"></i>充值记录
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="btn m">
+                    <i class="icon-cog"></i>会员配置
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/level/list.html" class="btn">
+                            <i class="icon-angle-right"></i>等级配置
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/setup-1.html" class="btn">
+                            <i class="icon-angle-right"></i>会员设置
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="smenu">
+            <li>
+                <a class="btn m">
+                    <i class="icon-cog"></i>系统配置
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/setup.html" class="btn">
+                            <i class="icon-angle-right"></i>设置面板
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/city/list.html" class="btn">
+                            <i class="icon-angle-right"></i>城市管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="btn m">
+                    <i class="icon-user"></i>权限管理
+                </a>
+                <ul>
+                    <li>
+                        <a href="/mgr/admin/edit.html" class="btn">
+                            <i class="icon-angle-right"></i>添加管理员
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/mgr/admin/list.html" class="btn">
+                            <i class="icon-angle-right"></i>管理员列表
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="rightpan">
+        <iframe id="mainifrm" name="mainifrm" frameborder="0" src="main.html" style="height: 100%; width: 100%; border: none; margin: 0; padding: 0; float: left;"></iframe>
+    </div>
+    <script type="text/javascript">
+        var cmenu = null;
+        var csmenu = [];
+        var csmenua = [];
+
+        $(function () {
+            $(window).resize(function () {
+                var h = $(window).innerHeight() - $(".menu").height() + 1;
+                $(".rightpan").height(h - 2);
+                $(".leftpan").height(h - 2);
+            });
+            $(window).resize();
+            $(".menu .m").click(function () {
+                if (cmenu) { $(".leftpan .smenu:eq(" + (cmenu.index() - 1) + ")").hide(); cmenu.removeClass("btn-primary"); }
+                cmenu = $(this).addClass("btn-primary");
+                if (!cmenu.hasClass("nosub")) {
+                    $(".leftpan").show();
+                    $(".leftpan .smenu:eq(" + (cmenu.index() - 1) + ")").show();//.find("li:eq(0) .m").click();
+                    $(".rightpan").css("margin-left", "121px");
+                }
+                else {
+                    $(".leftpan").hide();
+                    $(".rightpan").css("margin-left", 0);
+                }
+            });
+            $(".menu > .m:eq(0)").click();
+            $(".leftpan .smenu .m").click(function () {
+                if (csmenu[cmenu.index()]) csmenu[cmenu.index()].next().slideUp();
+                if (csmenu[cmenu.index()] != $(this)) {
+                    csmenu[cmenu.index()] = $(this);
+                    csmenu[cmenu.index()].next().slideDown();
+                } else { csmenu[cmenu.index()] = null; }
+            });
+            $(".smenu ul a").click(function () {
+                if (csmenua[cmenu.index()]) csmenua[cmenu.index()].removeClass("btn-primary");
+                $(this).addClass("btn-primary");
+                csmenua[cmenu.index()] = $(this);
+            });
+        });
+
+        function showlayer() {
+            $(".sel_city ul").toggle();
+        }
+
+        function setcity(id, cn) {
+            x.cookie.set("mgr_ct", id);
+            $(".sel_city ul").hide();
+            $(".sel_city .btn span").text(cn)
+            mainifrm.document.location.reload();
+        }
+
+        function dologout() {
+            x.confirm("是否注销并退出当前帐号", function () {
+                x.doapi("mgr.logout", null, function (d) {
+                    if (d.issucc) {
+                        x.alert("当前帐户已经注销，系统安全退出", function () {
+                            document.location.href = "login.html";
+                        });
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
