@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.js"></script>
+<script type="text/javascript" src="js/caidan.js"></script>
+<link rel="stylesheet" type="text/css" href="css/my.css"/>
+<title>我的账户</title>
+</head>
+
+<body>
+<div class="top">
+    <div class="top01">
+    	<p>Welcome to ANDR ROCKY!</p>
+        <ul>
+        	<li class="ff"><a href="#">My Account<span></span></a>
+            	<div class="box">
+                	<ul>
+                    	<li><a href="#">My Account</a></li>
+                        <li><a href="#">My Account</a></li>
+                    </ul>
+                </div>
+            </li>
+            <script>
+            	$(function(){
+					$(".ff").click( function(){
+						$('.box').toggleClass("box01");
+						$('.ff a span').toggleClass("sp");
+						})
+					})
+            </script>
+            <li class="ff01"><a href="#">Shopping Cart</a></li>
+        </ul>
+    </div>
+</div>
+<div class="header">
+	<div class="flet">
+    	<img src="images/gj_17.png" />
+    </div>
+    <div class="right">
+    	<p><input type="text" class="txt"  placeholder="Search for products" /><input type="button"  class="but"/></p>
+        <div class="clear"></div>
+        <div class="top2">
+  <ul class="daoh contair">
+    <li><a href="#">HOME</a> </li>
+    <li><span></span><a href="#">CATEGORIES</a>
+      <div class="erji">
+        <dl>
+          <dd><a href="#">Kitchen</a></dd>
+          <dd><a href="#">Household</a></dd>
+          <dd><a href="#">Bag & Jewelry</a></dd>
+          <dd><a href="#">Kids</a></dd>
+          <dd><a href="#">otherS</a></dd>
+        </dl>
+      </div>
+    </li>
+    <li><span></span><a href="#">BESTSELLER</a></li>
+    <li><span></span><a href="#">PREFERENTIAL   ACTIVITIES</a> 
+    <div class="erji">
+        <dl>
+          <dd><a href="#">Special Zone</a></dd>
+          <dd><a href="#">Group Buying</a></dd>
+          <dd><a href="#">Just One Day</a></dd>
+                  </dl>
+      </div>
+      </li>
+      <li><span></span><a href="#">ABOUT US</a> </li>
+      </ul>
+</div>
+    </div>
+</div>
+
+<div class="min01">
+	<h2 class="h202">MY ACCOUNT</h2>
+  <div class="clear"></div>    
+<div class="shangp">
+	<div class="left02">
+    	<ul class="ul01">
+        	<li><a href="#" class="xx">Hello, XXX!</a></li>
+            <li><a href="#">MY ACCOUNT</a></li>
+            <li><a href="#">CHANGE PASSWORD</a></li>
+            <li><a href="#">ORDER HISTORY</a></li>
+            <li><a href="#">Exit</a></li>
+        </ul>
+         <script>
+              $(function(){
+			        $(".ul01 li a").hover(function(){
+						$(this).addClass("xx").parent("li").siblings("li").children("a").removeClass("xx");
+				    });
+	            });
+</script>
+    
+    </div>
+	<div class="right02">
+    <ul class="ul03">
+    	<li><span><i style=" color:#dc3535;">*</i>NAME</span><input type="text" class="txt01" placeholder="YOUR NAME" />
+        <div class="clear"></div>   
+        </li>
+        <li><span><i style=" color:#dc3535;">*</i>GENDER</span>
+        <input type="radio" class="txt02" name="hh"/><p>MALE</p> 
+        <input type="radio" class="txt02" name="hh"/><p>FEMALE</p>
+         <div class="clear"></div>  
+        </li>
+        <li><span><i style=" color:#dc3535;">*</i>AREA</span>
+         <select class="txt01">
+          	<option>COUNTRY</option>
+          </select>
+          <select class="txt01" style="margin-top:20px; margin-left:200px" >
+          	<option>CITY</option>
+          </select>
+        <div class="clear"></div>   
+        </li>
+           <li><span><i style=" color:#dc3535;">*</i>CELLPHONE NUMBER</span><input type="text" class="txt01"  />
+        <div class="clear"></div>   
+        </li>
+         <li><span><i style=" color:#dc3535;">*</i>WHATSPP NUMBER</span><input type="text" class="txt01"  />
+        <div class="clear"></div>   
+        </li>
+         <li><span><i style=" color:#dc3535;">*</i>MAIL</span><input type="text" class="txt01"  />
+        <div class="clear"></div>   
+        </li>
+          <li style="border-bottom:1px dashed #CCC;"><i style=" color:#dc3535;">*</i><p style="color:#333; float:none; margin:0px; line-height:20px; margin-bottom:15px;">TO PREVENT YOU FROM FORGETTING YOUR PASSWORD, YOU CAN SET A
+ PASSWORD PROTECTION ISSUE</p>
+        <div class="clear"></div>   
+        </li>
+          <li><i style=" color:#dc3535;">*</i>
+          <select class="txt03">
+          	<option>CHOOSE TO SET THE PASSWORD PROTECTION ISSUE</option>
+          </select>
+        <div class="clear"></div>   
+        </li>
+        <li><i style=" color:#dc3535;">*</i>
+          <input type="text" class="txt03" placeholder="FILL IN YOUR ANSWER" />
+        <div class="clear"></div>   
+        </li>
+        <input class="txt04" type="button" value="SAVE" />
+    </ul>
+
+    
+    
+    </div>
+</div>    
+  </div>  
+
+    
+   
+ <div class="clear"></div> 
+ <div class="fooer">
+ 	<div class="left01">
+    	<ul>
+        	<li>
+            	<h3>Categories</h3>
+                <a href="#">Kitchen</a>
+                <a href="#">Household</a>
+                <a href="#">Bag & Jewelry</a>
+                <a href="#">Kids</a>
+                <a href="#">otherS</a>
+            </li>
+            <li>
+            	<h3>BESTSELLER</h3>
+            </li>
+            <li>
+            	<h3>PREFERENTIAL   ACTIVITIES</h3>
+                <a href="#">Special Zone</a>
+                <a href="#">Group Buying</a>
+                <a href="#">Just One Day</a>
+            </li>
+        </ul>
+         <div class="clear"></div> 
+    </div>
+    <div class="right01">
+    	<h2>About us</h2>
+        <p>QUALITY FIRST, CUSTOMER UPPERMOST! ANDA ROCKY AIMS IN PROVIDING EASY ONLINE SHOPPING, CUSTOMIZED PURCHASING ASSISTANCE AND BEST FORWARDING TRANSPORTATION IN AFRICA.</p>
+        <ul>
+        	<li class="ss">(+86) 87585875</li>
+            <li class="ss01">RM, 505, LONGKOU TECHNOLOGY BUILDING, NO. 34 LONGKOU (E) ROAD,
+GUANGZHOU, CHINA</li>
+            <li class="ss02">Rocky_foo@hotmail.com</li>
+        </ul>
+    </div>
+        <div class="clear"></div> 
+ </div>  
+      <div class="clear"></div> 
+<div class="fooer01"><p>© 2017 andr rocky. All Rights Reserved.</p></div>    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
