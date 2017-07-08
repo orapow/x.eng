@@ -35,7 +35,7 @@ namespace X.App.Apis.mgr.user
                     select u;
 
             //if (city > 0) q = q.Where(o => o.city == (mg.x_role.power == "###" ? city : mg.city));
-            if (!string.IsNullOrEmpty(key)) q = q.Where(o => o.name.Contains(key) || o.tel.Contains(key) || o.nickname.Contains(key));
+            if (!string.IsNullOrEmpty(key)) q = q.Where(o => o.name.Contains(key) || o.ptel.Contains(key) || o.nickname.Contains(key));
 
             var list = q.OrderByDescending(o => o.ctime).Skip((page - 1) * limit).Take(limit).ToList();
 
@@ -43,7 +43,7 @@ namespace X.App.Apis.mgr.user
             {
                 u.id,
                 name = string.IsNullOrEmpty(u.name) ? u.name : u.name + "(" + u.sex + ")",
-                u.tel,
+                u.ptel,
                 u.nickname,
                 city = GetDictName("sys.city", u.city),
                 u.headimg,

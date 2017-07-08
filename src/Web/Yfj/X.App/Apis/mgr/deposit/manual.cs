@@ -22,7 +22,7 @@ namespace X.App.Apis.mgr.deposit
         }
         protected override XResp Execute()
         {
-            var user = DB.x_user.SingleOrDefault(o => o.uid == uid || o.tel == uid);
+            var user = DB.x_user.SingleOrDefault(o => o.uid == uid || o.ptel == uid);
             if (user == null) throw new XExcep("0x0018");
             if (amount <= 0) throw new XExcep("0x0019");
 

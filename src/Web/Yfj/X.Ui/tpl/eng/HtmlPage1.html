@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="/js/jq_2.1.4.js"></script>
+</head>
+<
+<body>
+   
+    <script type="text/javascript" src="/js/x.js"></script>
+<a href="javascript:;" onclick="Addmgr()">添加管理员</a>
+    <script>
+        function Addmgr()
+        {
+
+            x.doapi("eng.addmgr", {}, function (d) {
+                if (!d.issucc) { return; }
+                alert("添加成功")
+            })
+        }
+    </script>
+</body>
+</html>

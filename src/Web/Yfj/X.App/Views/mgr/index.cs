@@ -4,12 +4,9 @@ using System.Linq;
 
 namespace X.App.Views.mgr
 {
-    public class index : xmg
-    {
-        protected override int powercode
-        {
-            get
-            {
+    public class index : xmg {
+        protected override int powercode {
+            get {
                 return 0;
             }
         }

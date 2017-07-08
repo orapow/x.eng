@@ -1,0 +1,82 @@
+﻿<div class="fudong">
+    <ul>
+        <li class="no08">
+            <a href="/eng/index.html">HOME</a>
+        </li>
+        <li class="no09">
+            <a href="#">GOODS</a>
+            <div class="tanc">
+                <ul>
+                    <li><a href="/eng/goods/list-1.html">KITCHEN</a></li>
+                    <li><a href="/eng/goods/list-2.html">HOUSEHOLD</a></li>
+                    <li><a href="/eng/goods/list-3.html">BAG & JEWELRY</a></li>
+                    <li><a href="/eng/goods/list-4.html">KIDS</a></li>
+                    <li><a href="/eng/goods/list-5.html">OTHERS</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="no011">
+            <a href="#">SPECIAL</a>
+            <div class="tanc">
+                <ul>
+                    <li><a href="#">GROUP BUYING</a></li>
+                    <li><a href="#">SPECIAL ZONE</a></li>
+                    <li><a href="#">CATEGORIES</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="no012">
+            <a href="#">MY</a>
+            <div class="tanc" style="right:15px;">
+                <ul>
+                    <li><a href="#">Hello $!{cu.name}!</a></li>
+                    <li><a href="/eng/user/index.html">MY ACCOUNT</a></li>
+                    <li><a href="/eng/user/mpwd.html">CHANGE PASSWORD</a></li>
+                    <li><a href="/eng/goods/sale.html">ORDER HISTORY</a></li>
+                    #set($a = $cu)
+                    #if($a=="")
+                    <li><a href="javascript:;" onclick="signOut()">Exit</a></li>
+                    #end
+                </ul>
+            </div>
+            <!--<div class="tanc" style="right:15px;">
+                <ul>
+                    <li><a href="#">LOGIN</a></li>
+                    <li><a href="#">REGISTERED</a></li>
+                </ul>
+            </div>-->
+        </li>
+    </ul>
+</div>
+<script type="text/javascript" src="/js/x.js"></script>
+<script>
+    $(".fudong ul li").click(function () {
+        $(this).toggleClass("sd").siblings("li").removeClass("sd");
+    })
+
+    function signOut() {
+        if (!confirm("是否确定退出当前账号?"))
+            return;
+        x.doapi("eng.logout", {}, function (d) {
+            if (!d.issucc) return;
+            document.location.href = "/eng/index.html";
+        });
+    }
+
+    function deleteCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = getCookie(name);
+        if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg))
+            return unescape(arr[2]);
+        else {
+            alert("no cookie get");
+            return null;
+        }
+    }
+</script>

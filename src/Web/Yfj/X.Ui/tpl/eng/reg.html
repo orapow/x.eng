@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    #parse("eng/_head.html")
+    <title>注册</title>
+</head>
+
+<body style="background:#f5f5f5;">
+
+    <div class="comtop01">
+        CREATE AN ACCOUNT
+        #parse("eng/_topbtn.html")
+    </div>
+    <div class="min01">
+        <ul class="ul03">
+            <li>
+                <span><i style="color:#dc3535;">*</i>NAME</span><input type="text" class="text01" placeholder="YOUR NAME" id="uname" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>GENDER</span>
+                <select class="text01" id="select">
+                    <option value="1" selected="selected">MALE</option>
+                    <option value="2">FEMALE</option>
+                </select>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>AREA</span>
+                <!--<select class="text01" id="area">
+                   <option>COUNTRY</option>
+                 </select>
+                 <select class="text01" style="margin-top:20px;" id="city">
+                   <option>CITY</option>
+                 </select>
+                  -->
+                <select id="ct1" class="text01" onchange="loadcity(this.value)">
+                    <option value="">COUNTRY</option>
+                    #foreach($c in $cs)
+                    <!--#if($c.name==$ent.qu)
+                    <option value="$c.value" selected="selected">$c.name</option>
+                    #else-->
+                    <option value="$c.value">$c.name</option>
+                    <!--#end-->
+                    #end
+                </select>
+                <select id="ct2" class="text01 street" style="margin-top:20px;">
+                    <option value="0">CITY</option>
+                </select>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>PHONE&nbsp;NUMBER</span>
+                <div class="clear"></div>
+                <input type="text" class="text01" id="P_tel" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>WHATSAPP&nbsp;NUMBER</span>
+                <div class="clear"></div>
+                <input type="text" class="text01" id="W_tel" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>MAIL</span><input type="text" class="text01" id="email" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>PASSWORD</span><input type="text" class="text01" id="1st_Pwd" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>RE-ENTER PASSWORD</span><input type="text" class="text01" id="2nd_Pwd" />
+                <div class="clear"></div>
+            </li>
+
+            <li>
+                <input class="txt04" type="button" onclick="do_reg()" value="REGISTER" />
+                <p>IF YOU ALREADY HAVE AN ACCOUNT, PLEASE <a href="/eng/login.html" style="color:#dc3535; text-decoration:underline;">LOG IN</a></p>
+            </li>
+
+            <div class="clear"></div>
+        </ul>
+
+    </div>
+
+
+    #parse("eng/_foot.html")
+    <script type="text/javascript" src="/js/x.js"></script>
+    <script type="text/javascript">
+        function do_reg() {
+            var name = $("#uname").val();
+            if (!name) { alert("用户名不能为空!"); return }
+            var sex = $("#select option:selected").val();
+            var country=$("#ct1 option:selected").val();;
+            var city = $("#ct2 option:selected").val()
+            var Phone_tel = $("#P_tel").val();
+            if (!Phone_tel) { alert("手机号码不能为空!"); return }
+            var WhatsApp_tel = $("#W_tel").val();
+            if (!WhatsApp_tel) { alert("WhatsApp号码不能为空!") }
+            var email = $("#email").val();
+            if (!email) { alert("Eamil不能为空!") }
+            var pwd = $("#1st_Pwd").val();
+            if (!pwd) { alert("密码不能为空!"); return; }
+            var pwds = $("#2nd_Pwd").val();
+            if (!pwds) { alert("请输入确认密码!"); return; }
+            if (pwd != pwds) { alert("密码不一致!"); return }
+
+            x.doapi("eng.reg", { name: name, sex: sex, country:country,city:city, Phone_tel: Phone_tel, WhatsApp_tel: WhatsApp_tel, email: email, pwd: pwd },
+                function (d) {
+                    if (!d.issucc) return;
+                    document.location.href = "/eng/user/index.html";
+                })
+
+        };
+
+        function loadcity(up) {
+            x.doapi("eng.addr.loadct", { up: up }, function (d) {
+                if (!d.issucc) return;
+                $(".street").html("");
+                for (var i in d.items) {
+                    var ct = d.items[i];
+                    $(".street").append('<option value="' + ct.value + '" ' + (ct.name == "$ent.zhen" ? "selected='selected'" : "") + '>' + ct.name + '</option>');
+                }
+            });
+        }
+
+
+    </script>
+</body>
+</html>

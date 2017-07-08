@@ -21,8 +21,7 @@ namespace X.App.Apis.mgr
             result[1] = Statistics.getMemberStati(startTime, 24, DB, cityid);
             result[2] = Statistics.getMemberStati(startTime, 24, DB, cityid);
 
-            return new XResp()
-            {
+            return new XResp() {
                 msg = Serialize.ToJson(result),
             };
         }

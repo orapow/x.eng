@@ -35,7 +35,7 @@ namespace X.App.Apis.mgr
             if (mg == null) throw new XExcep("0x0004");
 
             if (mg.city == null || mg.city == 0) throw new XExcep("0x0060");
-            if (mg.city == 62 && mg.role_id == 3) long.TryParse(GetReqParms("mgr_ct"), out cityid);
+            if (mg.city == 8 && mg.role_id == 3) long.TryParse(GetReqParms("mgr_ct"), out cityid);
             if (cityid == 0) cityid = mg.city.Value;
 
             ValidPower();

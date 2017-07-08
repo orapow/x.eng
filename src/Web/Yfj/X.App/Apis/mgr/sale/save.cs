@@ -41,7 +41,7 @@ namespace X.App.Apis.mgr.sale
             if (saleItem == null) saleItem = new x_sale();
 
             saleItem.goods_id = ent.goods_id;
-            saleItem.city_id = mg.city;
+            saleItem.city_id = (int)mg.city;
             saleItem.limit = limit;
             saleItem.count = count;
             saleItem.price = price;

@@ -19,15 +19,15 @@ namespace X.App.Apis.mgr.admin
 
             var q = from ad in DB.x_mgr
                     where ad.city == cityid
-                    select new
-                    {
+                    select new {
                         ad.mgr_id,
                         ad.uid,
                         ad.name,
                         ad.tel,
                         ad.city,
                         role = (ad.role_id == 3) ? "总管理员" : (ad.role_id == 2 ? "财务" : "客服"),
-                        ad.email
+                        ad.email,
+                        ctime = ad.ctime.Value
                         //ad.pwd
                     };
 

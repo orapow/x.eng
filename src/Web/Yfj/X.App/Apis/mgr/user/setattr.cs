@@ -29,7 +29,7 @@ namespace X.App.Apis.mgr.user
             u.group = level;
             u.invter = sman;
             u.name = name;
-            u.tel = tel;
+            u.ptel = tel;
 
             SubmitDBChanges();
 
