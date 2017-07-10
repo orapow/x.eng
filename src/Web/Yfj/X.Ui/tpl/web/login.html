@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/web/my.css" />
+    <script type="text/javascript" src="/js/web/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/js/web/jquery.SuperSlide.2.1.js"></script>
+    <script type="text/javascript" src="/js/web/caidan.js"></script>
+
+    <script type="text/javascript" src="/js/x.js"></script>
+    <title>登录</title>
+</head>
+
+<body>
+    #parse("_top.html")
+ <div class="min02">
+        <h2>ENTER INFORMATION TO LOG IN</h2>
+
+        <ul class="ul03" style="width:50%; margin:0px auto;">
+            <li>
+                <span><i></i>NAME</span><input type="text" id="bt_name" class="txt01" placeholder="YOUR NAME" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i></i>PASSWORD</span><input type="text" id="bt_pwd" class="txt01" />
+                <div class="clear"></div>
+            </li>
+            <input class="txt04" type="button" onclick="passwordLogin()" value="LOG IN" style="width:100%; margin-top:10px; font-size:16px; line-height:40px; height:40px;" />
+            <div class="clear"></div>
+            <h3>
+                NO ACCOUNT YET? REGISTER NOW! VERY CONVENIENT!
+                <a href="#" style="color:#dc3535;color:#dc3535; text-decoration:underline;">CREATE AN ACCOUNT</a><br />
+                <a href="#" style="color:#92a4ca;color:#92a4ca; text-decoration:underline;">FORGET PASSWORD?</a>
+            </h3>
+        </ul>
+        <div class="clear"></div>
+    </div>
+    #parse("_foot.html")
+
+    <script type="text/javascript">
+        function passwordLogin() {
+            var name = $("#bt_name").val();
+            if(!name){(alert("账号不能为空")); return;};
+            var pwd = $("#bt_pwd").val();
+            if (!pwd) { alert("密码不能为空"); return;}
+            x.doapi("web.login", { name: name, pwd: pwd }, function (d) {
+                if (!d.issucc) return;
+                document.location.href = "/web/user/index.html";
+            });
+        }
+    </script>
+</body>
+</html>

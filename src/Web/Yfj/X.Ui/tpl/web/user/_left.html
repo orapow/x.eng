@@ -1,0 +1,17 @@
+﻿<div class="left02">
+    <ul class="ul01">
+        <li><a href="#" class="xx">Hello, $!{mycu.name}!</a></li>
+        <li><a href="/web/user/index.html">MY ACCOUNT</a></li>
+        <li><a href="/web/user/change_pwd.html">CHANGE PASSWORD</a></li>
+        <li><a href="/web/order/list.html">ORDER HISTORY</a></li>
+        <li><a href="#">Exit</a></li>
+    </ul>
+    <script>
+              $(function(){
+			        $(".ul01 li a").hover(function(){
+						$(this).addClass("xx").parent("li").siblings("li").children("a").removeClass("xx");
+				    });
+	            });
+    </script>
+
+</div>

@@ -48,6 +48,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="res\css\web\my.css" />
+    <Content Include="res\img\web\fg_03.jpg" />
+    <Content Include="res\img\web\fg_03.png" />
+    <Content Include="res\img\web\fg_05.png" />
+    <Content Include="res\img\web\gj_03.jpg" />
+    <Content Include="res\img\web\gj_03.png" />
+    <Content Include="res\img\web\gj_05.png" />
+    <Content Include="res\img\web\gj_07.jpg" />
+    <Content Include="res\img\web\gj_08.png" />
+    <Content Include="res\img\web\gj_10.jpg" />
+    <Content Include="res\img\web\gj_12.jpg" />
+    <Content Include="res\img\web\gj_14.jpg" />
+    <Content Include="res\img\web\gj_14.png" />
+    <Content Include="res\img\web\gj_16.jpg" />
+    <Content Include="res\img\web\gj_17.png" />
+    <Content Include="res\img\web\gj_25.png" />
+    <Content Include="res\img\web\gj_28.png" />
+    <Content Include="res\img\web\gj_31.png" />
+    <Content Include="res\img\web\gj_37.png" />
+    <Content Include="res\img\web\gj_41.png" />
+    <Content Include="res\img\web\gj_44.png" />
+    <Content Include="res\img\web\gj_46.png" />
+    <Content Include="res\img\web\hj_03.png" />
+    <Content Include="res\img\web\rg_07.png" />
+    <Content Include="res\img\web\rp_08.png" />
+    <Content Include="res\img\web\rp_21.png" />
+    <Content Include="res\img\web\RR_03.jpg" />
+    <Content Include="res\img\web\RR_06.jpg" />
+    <Content Include="res\img\web\sdg_32.png" />
+    <Content Include="res\img\web\tu_03.png" />
+    <Content Include="res\img\web\zs.png" />
+    <Content Include="res\js\web\caidan.js" />
+    <Content Include="res\js\web\jquery-1.10.2.min.js" />
+    <Content Include="res\js\web\jquery.SuperSlide.2.1.js" />
+    <Content Include="res\js\web\mzp-packed.js" />
     <Content Include="tpl\eng\goods\detail.html" />
     <Content Include="tpl\eng\goods\list.html" />
     <Content Include="tpl\eng\goods\sale_list.html" />
@@ -231,6 +266,23 @@
     <Content Include="tpl\eng\reg.html" />
     <Content Include="tpl\eng\login.html" />
     <Content Include="tpl\eng\index.html" />
+    <Content Include="tpl\web\about.html" />
+    <Content Include="tpl\web\goods\list.html" />
+    <Content Include="tpl\web\goods\sale.html" />
+    <Content Include="tpl\web\index.html" />
+    <Content Include="tpl\web\login.html" />
+    <Content Include="tpl\web\order\list.html" />
+    <Content Include="tpl\web\reg.html" />
+    <Content Include="tpl\web\user\change_pwd.html" />
+    <Content Include="tpl\web\user\index.html" />
+    <Content Include="tpl\web\user\reset.html" />
+    <Content Include="tpl\web\user\_left.html" />
+    <Content Include="tpl\web\_foot.html" />
+    <Content Include="tpl\web\_top.html" />
+    <Content Include="tpl\web\团购\团购列表.html" />
+    <Content Include="tpl\web\团购\团购特价.html" />
+    <Content Include="tpl\web\团购\团购详情.html" />
+    <Content Include="tpl\web\团购\团购限时.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

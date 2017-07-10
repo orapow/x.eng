@@ -208,6 +208,17 @@
     <Compile Include="Views\sder\detail.cs" />
     <Compile Include="Views\sder\list.cs" />
     <Compile Include="Views\sder\_sd.cs" />
+    <Compile Include="Views\web\about.cs" />
+    <Compile Include="Views\web\goods\list.cs" />
+    <Compile Include="Views\web\goods\sale.cs" />
+    <Compile Include="Views\web\index.cs" />
+    <Compile Include="Views\web\login.cs" />
+    <Compile Include="Views\web\order\list.cs" />
+    <Compile Include="Views\web\reg.cs" />
+    <Compile Include="Views\web\user\change_pwd.cs" />
+    <Compile Include="Views\web\user\index.cs" />
+    <Compile Include="Views\web\user\reset.cs" />
+    <Compile Include="Views\web\_web.cs" />
     <Compile Include="Views\xview.cs" />
     <Compile Include="Views\com\view.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

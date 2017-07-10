@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/web/my.css" />
+    <script type="text/javascript" src="/js/web/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/js/web/jquery.SuperSlide.2.1.js"></script>
+    <script type="text/javascript" src="/js/web/caidan.js"></script>
+    <script type="text/javascript" src="../res/js/x.js"></script>
+    <title>注册</title>
+</head>
+
+<body>
+    #parse("_top.html")
+
+    <div class="min02">
+        <h2>PLEASE PROVIDE THE INFORMATION BELOW TO CREATE YOUR ACCOUNT</h2>
+
+        <ul class="ul03" style="width:50%; margin:0px auto;">
+            <p style="color:#dc3535; line-height:40px; font-size:14px;">* REQUIRED FIELDS</p>
+            <li>
+                <span><i style="color:#dc3535;">*</i>NAME</span><input type="text" class="txt01" placeholder="YOUR NAME" required="required" id="bt_name" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>GENDER</span>
+                <input type="radio" class="txt02" name="hh" value="0" /><p>MALE</p>
+                <input type="radio" class="txt02" name="hh" value="1" /><p>FEMALE</p>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>AREA</span>
+
+                <select class="txt01">
+                    <option>COUNTRY</option>
+                </select>
+                <select class="txt01" style="margin-top:20px; margin-left:200px">
+                    <option>CITY</option>
+                </select>
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>CELLPHONE NUMBER</span><input type="text" class="txt01" required="required" id="CELLPHONE_tel" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>WHATSAPP NUMBER</span><input type="text" class="txt01" required="required" id="WHATSAPP_tel" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>MAIL</span><input type="text" class="txt01" required="required" id="id_email" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>PASSWORD</span><input type="text" class="txt01" required="required" id="id_1stPwd" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span><i style="color:#dc3535;">*</i>RE-ENTER PASSWORD</span><input type="text" class="txt01" required="required" id="id_2ndPwd" />
+                <div class="clear"></div>
+            </li>
+            <input class="txt04" type="button" value="REISTEREDG" required="required" onclick="register()" style="width:100%; font-size:16px; line-height:40px; height:40px;" />
+            <div class="clear"></div>
+            <h3>IF YOU ALREADY HAVE AN ACCOUNT, PLEASE <a href="#" style="color:#dc3535; text-decoration:underline;">LOG IN</a></h3>
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+#parse("_foot.html")
+
+    <script type="text/javascript">
+        function register() {
+            var name = $("#bt_name").val();
+            if (!name) { alert("name不能为空"); return;}
+            var sex = $('input:radio[name="hh"]:checked').val();
+            if (!sex) { alert("sex不能为空"); return; }
+            var Phone_tel = $("#CELLPHONE_tel").val();
+            if (!Phone_tel) { alert("Phone_tel不能为空"); return; }
+            var WhatsApp_tel = $("#WHATSAPP_tel").val();
+            if (!WhatsApp_tel) { alert("WhatsApp_tel不能为空"); return; }
+            var email = $("#id_email").val();
+            if (!email) { alert("email不能为空"); return; }
+            var pwd = $("#id_1stPwd").val();
+            if (!pwd) { alert("pwd不能为空"); return; }
+            var pwds = $("#id_2ndPwd").val();
+            if (!pwds) { alert("pwds不能为空"); return; }
+            if (pwd != pwds) { alert("密码不一致"); return;}
+            x.doapi("web.reg", { name: name, sex: sex, Phone_tel: Phone_tel, WhatsApp_tel: WhatsApp_tel, email: email, pwd: pwd },
+                function (d) {
+                if (!d.issucc) return;
+                document.location.href = "/web/user/index.html";
+            });
+            
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

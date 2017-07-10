@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/web/my.css" />
+    <script src="/js/jq_1.10.1.js"></script>
+    <script type="text/javascript" src="/js/web/jquery.SuperSlide.2.1.js"></script>
+    <script type="text/javascript" src="/js/web/caidan.js"></script>
+
+    <title>首页</title>
+</head>
+
+<body>
+    #parse("web/_top.html")
+
+    <div class="fullSlide">
+        <div class="hd">
+            <ul></ul>
+        </div>
+        <div class="bd">
+            <ul>
+                <li style="background: url(/img/web/rp_21.png) no-repeat center;"></li>
+                <li style="background: url(/img/web/rp_21.png) no-repeat center;"></li>
+                <li style="background: url(/img/web/rp_21.png) no-repeat center;"></li>
+                <li style="background: url(/img/web/rp_21.png) no-repeat center;"></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        /* 控制左右按钮显示 */
+        jQuery(".fullSlide").hover(function () { jQuery(this).find(".prev,.next") }, function () { jQuery(this) });
+
+        /* 调用SuperSlide */
+        jQuery(".fullSlide").slide({
+            titCell: ".hd ul", mainCell: ".bd ul", effect: "fold", autoPlay: true, autoPage: true, trigger: "click",
+            startFun: function (i) {
+                var curLi = jQuery(".fullSlide .bd li").eq(i); /* 当前大图的li */
+                if (!!curLi.attr("_src")) {
+                    curLi.css("background-image", curLi.attr("_src")).removeAttr("_src") /* 将_src地址赋予li背景，然后删除_src */
+                }
+            }
+        });
+
+    </script>
+    <div class="fenl">
+        <ul>
+            <li class="ii"><a href="#" class="tt">Special  District</a></li>
+            <li><a href="#" class="tt01">Group  purchase</a></li>
+            <li><a href="#" class="tt02">Limited  indulgence</a></li>
+            <script>
+                $(function () {
+                    $(".fenl ul li").hover(function () {
+                        $(this).addClass("ii").siblings("li").removeClass("ii");
+                    });
+                });
+            </script>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="min">
+        <h2 class="ht">BESTSELLER<a href="#">more+</a></h2>
+        <ul class="chan">
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale-{id}.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+            <li>
+                <img src="/img/web/gj_37.png" />
+                <div class="biao">
+                    <h3>
+                        CHANODUG <br />
+                        Portable air bed
+                    </h3>
+                    <span>$ 198.00</span> <a href="/web/goods/sale.html">SHOP NOW</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    #parse("web/_foot.html")
+</body>
+</html>
