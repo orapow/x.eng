@@ -48,6 +48,7 @@
     <Compile Include="Apis\eng\login.cs" />
     <Compile Include="Apis\eng\logout.cs" />
     <Compile Include="Apis\eng\reg.cs" />
+    <Compile Include="Apis\eng\user\infosave.cs" />
     <Compile Include="Apis\mgr\admin\del.cs" />
     <Compile Include="Apis\mgr\admin\list.cs" />
     <Compile Include="Apis\mgr\admin\save.cs" />
@@ -136,8 +137,10 @@
     <Compile Include="Views\com\code.cs" />
     <Compile Include="Views\com\dict.cs" />
     <Compile Include="Views\com\getpos.cs" />
+    <Compile Include="Views\eng\goods\detail.cs" />
     <Compile Include="Views\eng\goods\list.cs" />
-    <Compile Include="Views\eng\goods\sale.cs" />
+    <Compile Include="Views\eng\goods\sale_detail.cs" />
+    <Compile Include="Views\eng\goods\sale_list.cs" />
     <Compile Include="Views\eng\index.cs" />
     <Compile Include="Views\eng\reg.cs" />
     <Compile Include="Views\eng\user\index.cs" />

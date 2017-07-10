@@ -37,11 +37,9 @@
                 <select id="ct1" class="text01" onchange="loadcity(this.value)">
                     <option value="">COUNTRY</option>
                     #foreach($c in $cs)
-                    <!--#if($c.name==$ent.qu)
-                    <option value="$c.value" selected="selected">$c.name</option>
-                    #else-->
+                    
                     <option value="$c.value">$c.name</option>
-                    <!--#end-->
+                    
                     #end
                 </select>
                 <select id="ct2" class="text01 street" style="margin-top:20px;">

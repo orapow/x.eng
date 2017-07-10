@@ -33,6 +33,8 @@ namespace X.App.Apis.eng {
             user.ptel = Phone_tel;
             user.wtel = WhatsApp_tel;
             user.pwd = Secret.MD5(pwd);
+            user.country = Int32.Parse(country);
+            user.city = Int32.Parse(city);
             user.email = email;
             user.ctime = DateTime.Now;
             cu = user;

@@ -48,8 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="tpl\eng\goods\detail.html" />
     <Content Include="tpl\eng\goods\list.html" />
-    <Content Include="tpl\eng\goods\sale.html" />
+    <Content Include="tpl\eng\goods\sale_list.html" />
+    <Content Include="tpl\eng\goods\sale_detail.html" />
     <Content Include="tpl\eng\HtmlPage1.html" />
     <Content Include="tpl\eng\user\index.html" />
     <Content Include="tpl\eng\user\mpwd.html" />

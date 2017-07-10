@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    #parse("eng/_head.html")
+    <title>限时列表</title>
+</head>
+
+<body>
+
+    <div class="comtop">
+        <a href="#"><img src="/img/eng/dg_03.png" /></a>
+        #parse("eng/_topbtn.html")
+    </div>
+    <div class="right">
+        <ul>
+            <li><input type="text" class="txt" placeholder="Search" /><input type="button" class="txt01" /></li>
+        </ul>
+
+    </div>
+    <div class="chanp01">
+        <div class="clear"></div>
+
+        <h2 class="bit01">JUST ONE DAY</h2>
+        <ul>
+            #foreach($s in $sale)
+            <li>
+                <img src="$s.goods.cover" />
+                <div class="jiag01">
+                    <h3>$s.goods.name</h3>
+                    <div class="clear"></div>
+                    <h4>P $s.price</h4>
+                    <span>
+                        SAVE：P70<br />
+                        P <s>$s.goods.new_price</s>
+                    </span>
+                    <div class="clear"></div>
+                    <p class="pp">COUNTDOWN</p>
+                    <p class="pp"><span>08</span>:<span>19</span>:<span>25</span></p>
+                    <div class="clear"></div>
+                    <p><a style=" color:#e63628;=color:#e63628; margin-right:6px;"=margin-right:6px;">1001</a>LEFT</p>
+                    <p><a style=" color:#e63628;margin-right:6px;"=color:#e63628;margin-right:6px;">10</a>SOLD</p>
+                    <div class="clear"></div>
+                    <input type="button" class="but02" value="SHOP NOW" />
+                </div>
+                <div class="clear"></div>
+            </li>
+            #end
+            <a href="#" class="gend">TO LOAD MORE >></a>
+        </ul>
+
+        <div class="clear"></div>
+    </div>
+
+    #parse("eng/_foot.html")
+
+</body>
+</html>

@@ -12,7 +12,7 @@
         .menu .btn i { margin-right: 5px; }
         .menu .btn-link:hover, .btn-link:focus { background-color: none; text-decoration: none; }
         .menu .btn-primary { color: white; }
-        .leftpan { float: left; border-right: 1px solid #3086c8; position: relative; }
+        .leftpan { float: left; border-right: 1px solid #3086c8; position: relative; box-sizing: border-box;}
         .leftpan i { margin-right: 5px; text-indent: 0; }
         .leftpan > ul { margin-left: 0; display: none; }
         .leftpan ul li { display: block; }
@@ -23,7 +23,7 @@
         .leftpan { width: 120px; overflow-y: auto; overflow-x: hidden; }
         .leftpan ul li ul { display: none; }
         .leftpan .arrow { position: absolute; height: 90px; width: 10px; top: 50%; right: -10px; background-color: red; }
-        .rightpan { margin-left: 121px; }
+        .rightpan { margin-left: 120px; }
         .sel_city { position: absolute; left: 110px; top: 5px; }
         .sel_city ul { display: none; max-height: 400px; overflow-y: auto; list-style: none; padding: 5px; margin: 1px 0 0; text-align: center; background-color: white; z-index: 99; position: absolute; border: 1px solid #ccc; width: 90px; font-size: 14px; }
         .sel_city ul li { padding: 0; margin: 0; line-height: 22px; cursor: pointer; }
@@ -386,7 +386,7 @@
                 if (!cmenu.hasClass("nosub")) {
                     $(".leftpan").show();
                     $(".leftpan .smenu:eq(" + (cmenu.index() - 1) + ")").show();//.find("li:eq(0) .m").click();
-                    $(".rightpan").css("margin-left", "121px");
+                    $(".rightpan").css("margin-left", "120px");
                 }
                 else {
                     $(".leftpan").hide();
