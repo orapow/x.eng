@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="res\css\eng\my.css" />
     <Content Include="res\css\web\my.css" />
     <Content Include="res\img\web\fg_03.jpg" />
     <Content Include="res\img\web\fg_03.png" />
@@ -87,9 +88,16 @@
     <Content Include="tpl\eng\goods\list.html" />
     <Content Include="tpl\eng\goods\sale_list.html" />
     <Content Include="tpl\eng\goods\sale_detail.html" />
+    <Content Include="tpl\eng\group\list.html" />
+    <Content Include="tpl\eng\group\detail.html" />
     <Content Include="tpl\eng\HtmlPage1.html" />
+    <Content Include="tpl\eng\order\list.html" />
+    <Content Include="tpl\eng\special\list.html" />
+    <Content Include="tpl\eng\special\detail.html" />
     <Content Include="tpl\eng\user\index.html" />
     <Content Include="tpl\eng\user\mpwd.html" />
+    <Content Include="tpl\eng\user\pwd_problem.html" />
+    <Content Include="tpl\eng\user\check_pwdpro.html" />
     <Content Include="tpl\eng\_foot.html" />
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +105,6 @@
     <Content Include="dat\urls.x" />
     <Content Include="App.ashx" />
     <Content Include="dat\codes.x" />
-    <Content Include="res\css\eng\my.css" />
     <Content Include="res\css\x.dialog.css" />
     <Content Include="res\css\x.form.css" />
     <Content Include="res\css\mgr\x.grid.css" />

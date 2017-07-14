@@ -7,16 +7,19 @@
 </head>
 
 <body style="background:#f5f5f5;">
-
     <div class="comtop01">
+        <div class="com">
+            <input name="" type="button" class="return" onclick="history.go(-1)" />
+        </div>
         MY ACCOUNT
         #parse("/eng/_topbtn.html")
     </div>
+
     <div class="min01">
         <ul class="ul03">
             <li>
-                <input type="hidden" value="$cu.user_id" id="uid"/>
-                <span><i style="color:#dc3535;">*</i>NAME</span><input type="text" class="text01" placeholder="YOUR NAME" value="$!{cu.name}" id="name"/>
+                <input type="hidden" value="$cu.user_id" id="uid" />
+                <span><i style="color:#dc3535;">*</i>NAME</span><input type="text" class="text01" placeholder="YOUR NAME" value="$!{cu.name}" readonly="readonly" id="name" />
                 <div class="clear"></div>
             </li>
             <li>
@@ -62,22 +65,33 @@
                 <div class="clear"></div>
             </li>
             <li style="border-bottom:1px dashed #CCC; border-top:10px solid #f5f5f5; padding-top:10px;">
-                <i style="color:#dc3535;color:#dc3535; margin-bottom:20px;" margin-bottom:20px;"margin-bottom:20px;">*</i><p style="color:#333; float:none; margin:0px; line-height:20px; margin-bottom:15px;">
+                <i style="color:#dc3535;color:#dc3535; margin-bottom:20px;" margin-bottom:20px;"margin-bottom:20px;"=margin-bottom:20px;"margin-bottom:20px;">*</i><p style="color:#333; float:none; margin:0px; line-height:20px; margin-bottom:15px;">
                     TO PREVENT YOU FROM FORGETTING YOUR PASSWORD, YOU CAN SET A
                     PASSWORD PROTECTION ISSUE
                 </p>
                 <div class="clear"></div>
             </li>
             <li>
-                <select class="txt03" id="selectpwd">
-                    <option>CHOOSE TO SET THE PASSWORD PROTECTION ISSUE</option>
+                <input type="hidden" value="$!{cu.pro_id}" />
+                #if($!ent.pro_id>0)
+                 <input style="width:100%; align-content:center" class="txt04" type="button" value="Modify the security question" onclick="editquestion()" />
+               #else
+                <input style="width:100%" class="txt04" type="button" value="Set the security question" onclick="question()" />
+                #end
+            </li>
+            <!--<li>
+                <select class="txt03" id="selectpwd" onchange="loadpwd(this.value)">
+                    <option value="0">CHOOSE TO SET THE PASSWORD PROTECTION ISSUE</option>
+                    #foreach($p in $pwd)
+                    <option value="$p.value">$p.name</option>
+                    #end
                 </select>
                 <div class="clear"></div>
             </li>
             <li>
                 <input type="text" class="txt03" placeholder="FILL IN YOUR ANSWER" />
                 <div class="clear"></div>
-            </li>
+            </li>-->
             <li><input class="txt04" type="button" value="SAVE" onclick="dosave()" /></li>
             <div class="clear"></div>
         </ul>
@@ -93,7 +107,6 @@
             $("#selectsex option:last").attr("selected", "selected");
         };
 
-
         function loadcity(up) {
             x.doapi("eng.addr.loadct", { up: up }, function (d) {
                 if (!d.issucc) return;
@@ -105,28 +118,35 @@
             });
         }
 
-        function dosave()
-        {
-            var d = {
-                uid:$("#uid").val(),
-                name:$("#name").val(),
-                c1:$("[name='ct1']").val(),
-                c2:$("[name='ct2']").val(),
-                ptel:$("#ptel").val(),
-                wtel:$("#wtel").val(),
-                email: $("#email").val(),
+        function loadpwd(up) {
 
-            }
-            x.doapi("eng.user.infosave", d, function () {
-                if (!d.issucc) return;
-                document.location.href = "/eng/user/index.html";
-            })
-            alert("保存");
         }
+        function question() {
+            document.location.href = "pwd_problem.html";
+        }
+        function editquestion() {
+            document.location.href = "check_pwdpro.html";
+        }
+            function dosave() {
+                var d = {
+                    uid: $("#uid").val(),
+                    c1: $("[name='ct1']").val(),
+                    c2: $("[name='ct2']").val(),
+                    ptel: $("#ptel").val(),
+                    wtel: $("#wtel").val(),
+                    email: $("#email").val(),
+
+                }
+                x.doapi("eng.user.infosave", d, function () {
+                    if (!d.issucc) return;
+                    document.location.href = "/eng/user/index.html";
+                })
+                alert("保存");
+            }
 
 
-        if ("$!ent.city")
-            loadcity($("[name='ct1']").val());
+            if ("$!ent.city")
+                loadcity($("[name='ct1']").val());
 
     </script>
 </body>

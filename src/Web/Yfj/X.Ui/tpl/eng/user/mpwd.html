@@ -2,34 +2,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     #parse("eng/_head.html")
-<title>修改密码</title>
+    <link rel="stylesheet" type="text/css" href="../../../res/css/x.dialog.css" />
+    <title>修改密码</title>
 </head>
 
-<body style="background:#f5f5f5;" >
+<body style="background:#f5f5f5;">
 
-<div class="comtop01">
-CHANGE PASSWORD
-#parse("eng/_topbtn.html")
-</div>
-    <div class="min01">
-    	<ul class="ul03">
-    	<li><span>CURRENT PASSWORD</span><input type="text" class="text01" placeholder="YOUR NAME">
-        <div class="clear"></div>   
-        </li>
-        <li><span>NEW PASSWORD</span><input type="text" class="text01" placeholder="MALE">
-        <div class="clear"></div>   
-        </li>
-           <li><span>CONFIRM NEW PASSWORD</span><input type="text" class="text01">
-        <div class="clear"></div>   
-        </li>
-        <li><input class="txt04" type="button" value="SAVE"></li>
-         <div class="clear"></div>   
-    </ul>
-    
+    <div class="comtop01">
+        <div class="com">
+            <input name="" type="button" class="return" onclick="history.go(-1)" />
+        </div>
+        CHANGE PASSWORD
+        #parse("eng/_topbtn.html")
     </div>
-   
+    <div class="min01">
+        <ul class="ul03">
+            <li>
+                <span>CURRENT PASSWORD</span><input type="text" class="text01" id="old_pwd" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span>NEW PASSWORD</span><input type="text" class="text01" id="new_1stpwd" />
+                <div class="clear"></div>
+            </li>
+            <li>
+                <span>CONFIRM NEW PASSWORD</span><input type="text" class="text01" id="new_2ndpwd" />
+                <div class="clear"></div>
+            </li>
+            <li><input class="txt04" type="button" value="SAVE" onclick="do_save()" /></li>
+            <div class="clear"></div>
+        </ul>
 
-#parse("eng/_foot.html")
+    </div>
 
+
+    #parse("eng/_foot.html")
+    <script type="text/javascript">
+        $(function () {
+            if ($flag == 1) {
+                alert("请先设置密保后再来修改密码!"); document.location.href = "pwd_problem.html"; return;
+            }
+            document.location.href = "check_pwdpro.html";
+        });
+        function do_save() {
+            var old_pwd = $("#old_pwd").val();
+            if (!old_pwd) { alert("用户名不能为空!"); return }
+            var new_pwd = $("#new_1stpwd").val();
+            if (!new_pwd) { alert("密码不能为空!"); return }
+            var new_pwds = $("#new_2ndpwd").val();
+            if (new_pwd != new_pwds) { alert("密码不一致!"); return }
+
+            x.doapi("eng.user.savepwd", { old_pwd: old_pwd, new_pwd: new_pwd }, function (d) {
+                if (!d.issucc) return;
+                alert("密码修改成功,请重新登陆!");
+                x.doapi("eng.logout", {}, function (d) {
+                    if (!d.issucc) return;
+                    document.location.href = "/eng/login.html";
+                });
+            });
+        }
+    </script>
 </body>
 </html>

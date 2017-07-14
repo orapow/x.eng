@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="/css/web/my.css" />
     <script type="text/javascript" src="/js/web/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="/js/web/caidan.js"></script>
@@ -9,77 +9,118 @@
     <script type="text/javascript" src="/js/web/mzp-packed.js"></script>
 
     <script type="text/javascript" src="/js/x.js"></script>
-<title>我的账户</title>
+    <title>我的账户</title>
 </head>
 
 <body>
 
-#parse("web/_top.html")
+    #parse("web/_top.html")
 
-<div class="min01">
-	<h2 class="h202">MY ACCOUNT</h2>
-  <div class="clear"></div>    
-<div class="shangp">
-   
-	
-    #parse("/web/user/_left.html")
-	<div class="right02">
-    <ul class="ul03">
-       
-    	<li><span><i style="color:#dc3535;">*</i>NAME</span><input type="text" class="txt01" value="${mycu.name}" placeholder="YOUR NAME" />
-            
-         <div class="clear"></div>   
-        </li>
-      
-        <li><span><i style="color:#dc3535;">*</i>GENDER</span>
-        <input type="radio" class="txt02" name="hh"/><p>MALE</p> 
-        <input type="radio" class="txt02" name="hh"/><p>FEMALE</p>
-         <div class="clear"></div>  
-        </li>
-        <li><span><i style=" color:#dc3535;">*</i>AREA</span>
-         <select class="txt01">
-          	<option>COUNTRY</option>
-          </select>
-          <select class="txt01" style="margin-top:20px; margin-left:200px" >
-          	<option>CITY</option>
-          </select>
-        <div class="clear"></div>   
-        </li>
-           <li><span><i style="color:#dc3535;">*</i>CELLPHONE NUMBER</span><input type="text" class="txt01" value="$!{q.tel}"  />
-        <div class="clear"></div>   
-        </li>
-         <li><span><i style="color:#dc3535;">*</i>WHATSPP NUMBER</span><input type="text" class="txt01"  />
-        <div class="clear"></div>   
-        </li>
-         <li><span><i style=" color:#dc3535;">*</i>MAIL</span><input type="text" class="txt01"  />
-        <div class="clear"></div>   
-        </li>
-        
-          <li style="border-bottom:1px dashed #CCC;"><i style="color:#dc3535;">*</i><p style="color:#333; float:none; margin:0px; line-height:20px; margin-bottom:15px;">TO PREVENT YOU FROM FORGETTING YOUR PASSWORD, YOU CAN SET A
- PASSWORD PROTECTION ISSUE</p>
-        <div class="clear"></div>   
-        </li>
-          <li><i style=" color:#dc3535;">*</i>
-          <select class="txt03">
-          	<option>CHOOSE TO SET THE PASSWORD PROTECTION ISSUE</option>
-          </select>
-        <div class="clear"></div>   
-        </li>
-        <li><i style=" color:#dc3535;">*</i>
-          <input type="text" class="txt03" placeholder="FILL IN YOUR ANSWER" />
-        <div class="clear"></div>   
-        </li>
-        <input class="txt04" type="button" value="SAVE" />
-    </ul>
+    <div class="min01">
+        <h2 class="h202">MY ACCOUNT</h2>
+        <div class="clear"></div>
+        <div class="shangp">
 
-    
-    
+
+            #parse("/web/user/_left.html")
+            <div class="right02">
+                <ul class="ul03">
+
+                    <li>
+                        <span><i style="color:#dc3535;">*</i>NAME</span><input type="text" class="txt01" value="$!{mycu.name}" readonly="readonly" placeholder="YOUR NAME" />
+
+                        <div class="clear"></div>
+                    </li>
+
+                    <li>
+                        <span><i style="color:#dc3535;">*</i>GENDER</span>
+                        <input type="radio" class="txt02" name="hh" value="1" /><p>MALE</p>
+                        <input type="radio" class="txt02" name="hh" value="2" /><p>FEMALE</p>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <span><i style="color:#dc3535;">*</i>AREA</span>
+                        <select name="ct1" class="txt01" onchange="loadcity(this.value)">
+                            <option value="0">COUNTRY</option>
+                            #foreach($c in $cs)
+                            #if($c.value==$mycu.country)
+                            <option value="$!{c.value}" selected="selected">$!c.name</option>
+                            #else
+                            <option value="$!{c.value}">$!c.name</option>
+                            #end
+                            #end
+                        </select>
+                        <select class="txt01 stree" style="margin-top:20px; margin-left:200px">
+                            <optionn value="0">CITY</optionn>
+                        </select>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <span><i style="color:#dc3535;">*</i>CELLPHONE NUMBER</span><input type="text" class="txt01" value="$!{cu.ptel}" />
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <span><i style="color:#dc3535;">*</i>WHATSPP NUMBER</span><input type="text" class="txt01" value="$!{cu.wtel}" />
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <span><i style=" color:#dc3535;">*</i>MAIL</span><input type="text" class="txt01" value="$!{cu.email}" />
+                        <div class="clear"></div>
+                    </li>
+
+                    <li style="border-bottom:1px dashed #CCC;">
+                        <i style="color:#dc3535;">*</i><p style="color:#333; float:none; margin:0px; line-height:20px; margin-bottom:15px;">
+                            TO PREVENT YOU FROM FORGETTING YOUR PASSWORD, YOU CAN SET A
+                            PASSWORD PROTECTION ISSUE
+                        </p>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <i style="color:#dc3535;">*</i>
+                        <select class="txt03">
+                            <option>CHOOSE TO SET THE PASSWORD PROTECTION ISSUE</option>
+                            #foreach($p in $pwd)
+                            <option value="$!p.value">$!p.name</option>
+                            #end
+                        </select>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <i style="color:#dc3535;">*</i>
+                        <input type="text" class="txt03" placeholder="FILL IN YOUR ANSWER" />
+                        <div class="clear"></div>
+                    </li>
+                    <input class="txt04" type="button" value="SAVE" />
+                </ul>
+
+
+
+            </div>
+        </div>
     </div>
-</div>    
-  </div>  
 
-#parse("web/_foot.html")    
+    #parse("web/_foot.html")
+    <script type="text/javascript">
+        if ($cu.sex == 1)
+            $("input:radio[name='hh']").eq(0).attr("checked", "checked");
+        else 
+            $("input:radio[name='hh']").eq(1).attr("checked", "checked");
+        
+        function loadcity(up) {
+            x.doapi("eng.addr.loadct", { up: up }, function (d) {
+                if (!d.issucc) return;
+                $(".stree").html("");
+                for (var i in d.items) {
+                    var ct = d.items[i];
+                    $(".stree").append('<option value="' + ct.value + '"' + (ct.value == "$mycu.city" ? "selected='selected'" : "") + '>' + ct.name + '<\option>');
+                };
 
+            });
+        };
+
+        if ("$!mycu.city")
+            loadcity($("[name='ct1']").val());
+    </script>
 
 </body>
 </html>

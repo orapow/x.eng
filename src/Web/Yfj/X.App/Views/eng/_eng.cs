@@ -8,7 +8,7 @@ using X.Core.Utility;
 using X.Data;
 
 namespace X.App.Views.eng {
-    public class _eng:xview {
+    public class _eng : xview {
         protected virtual bool nd_user { get { return true; } }
         protected string opid { get; set; }
         protected x_user cu { get; set; }
@@ -20,8 +20,13 @@ namespace X.App.Views.eng {
 
             //if (!isWx && !nd_user) return;
 
-            if (!isWx && nd_user)if (Context.Request.RawUrl != "/eng/login.html")Context.Response.Redirect("/eng/login.html");else return;
-            if (!isWx)return;
+            if (!isWx && nd_user)
+                if (Context.Request.RawUrl != "/eng/login.html")
+                    Context.Response.Redirect("/eng/login.html");
+                else
+                    return;
+            if (!isWx)
+                return;
 
             var code = GetReqParms("code");
             if (string.IsNullOrEmpty(code))
@@ -78,11 +83,11 @@ namespace X.App.Views.eng {
 
             if (cu != null) {
                 cu.etime = DateTime.Now;
-                
+
                 SubmitDBChanges();
                 Context.Response.SetCookie(new HttpCookie("cu_key", cu.ukey));
             }
-            
+
         }
 
         protected override void InitDict()
@@ -92,6 +97,14 @@ namespace X.App.Views.eng {
                 dict.Add("cu", cu);
             }
 
+        }
+
+        /// <summary>
+        /// banner图片
+        /// </summary>
+        public List<x_ad> GetAds(int pos)
+        {
+            return DB.x_ad.Where(o => o.pos == pos).OrderByDescending(o => o.sort).ToList();
         }
     }
 }

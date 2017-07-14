@@ -5442,6 +5442,10 @@ namespace X.Data
 		
 		private string _email;
 		
+		private System.Nullable<long> _pro_id;
+		
+		private string _pro_answer;
+		
 		private string _uid;
 		
 		private string _pwd;
@@ -5500,6 +5504,10 @@ namespace X.Data
     partial void OncityChanged();
     partial void OnemailChanging(string value);
     partial void OnemailChanged();
+    partial void Onpro_idChanging(System.Nullable<long> value);
+    partial void Onpro_idChanged();
+    partial void Onpro_answerChanging(string value);
+    partial void Onpro_answerChanged();
     partial void OnuidChanging(string value);
     partial void OnuidChanged();
     partial void OnpwdChanging(string value);
@@ -5732,6 +5740,46 @@ namespace X.Data
 					this._email = value;
 					this.SendPropertyChanged("email");
 					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pro_id", DbType="BigInt")]
+		public System.Nullable<long> pro_id
+		{
+			get
+			{
+				return this._pro_id;
+			}
+			set
+			{
+				if ((this._pro_id != value))
+				{
+					this.Onpro_idChanging(value);
+					this.SendPropertyChanging();
+					this._pro_id = value;
+					this.SendPropertyChanged("pro_id");
+					this.Onpro_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pro_answer", DbType="NVarChar(200)")]
+		public string pro_answer
+		{
+			get
+			{
+				return this._pro_answer;
+			}
+			set
+			{
+				if ((this._pro_answer != value))
+				{
+					this.Onpro_answerChanging(value);
+					this.SendPropertyChanging();
+					this._pro_answer = value;
+					this.SendPropertyChanged("pro_answer");
+					this.Onpro_answerChanged();
 				}
 			}
 		}

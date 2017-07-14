@@ -8,6 +8,11 @@ using X.Web.Com;
 
 namespace X.App.Apis.eng {
     public class logout : _eng {
+        protected override bool nd_user {
+            get {
+                return false;
+            }
+        }
         protected override Web.Com.XResp Execute()
         {
             cu = null;

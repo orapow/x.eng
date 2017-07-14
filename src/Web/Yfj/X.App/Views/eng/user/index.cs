@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace X.App.Views.eng.user {
-    public class index:_eng {
+    public class index : _eng {
         public int id { get; set; }
         protected override string GetParmNames {
             get {
@@ -16,9 +16,11 @@ namespace X.App.Views.eng.user {
             base.InitDict();
             dict.Add("cs", GetDictList("sys.city", 0 + ""));
 
-           // if (id > 0) {
-                dict.Add("ent", cu);
-           // }
+            // if (id > 0) {
+            dict.Add("ent", cu);
+            // }
+
+            dict.Add("pwd", GetDictList("pwd.problem", 0 + ""));
 
         }
     }

@@ -6,18 +6,18 @@
     <script type="text/javascript" src="/js/eng/jquery.nicescroll.js"></script>
 
     <script>
-$(function(){
-$("#hnav").niceScroll({
-cursorcolor:"#999",
-cursoropacitymax:0.6,
-cursoropacitymin:1,
-touchbehavior:true,
-cursorwidth:"3px",
-cursorborder:"0",
-cursorborderradius:"5px"
+        $(function () {
+            $("#hnav").niceScroll({
+                cursorcolor: "#999",
+                cursoropacitymax: 0.6,
+                cursoropacitymin: 1,
+                touchbehavior: true,
+                cursorwidth: "3px",
+                cursorborder: "0",
+                cursorborderradius: "5px"
 
-});
-})
+            });
+        })
     </script>
 
 </head>
@@ -25,6 +25,9 @@ cursorborderradius:"5px"
 <body style="background:#f5f5f5;">
 
     <div class="comtop01">
+        <div class="com">
+            <input name="" type="button" class="return" onclick="history.go(-1)" />
+        </div>
         HOUSEHOLD
         #parse("eng/_topbtn.html")
 
@@ -36,36 +39,36 @@ cursorborderradius:"5px"
             </div>
             <div class="bd">
                 <ul class="gud">
-                    <li><a href="#"><img src="/img/eng/fg_03.jpg"></a></li>
-                    <li><a href="#"><img src="/img/eng/fg_03.jpg"></a></li>
-                    <li><a href="#"><img src="/img/eng/fg_03.jpg"></a></li>
-                    <li><a href="#"><img src="/img/eng/fg_03.jpg"></a></li>
+                    #foreach($p in $pics)
+                    <li><a href="#"><img src="$p" /></a></li>
+                    #end
                 </ul>
             </div>
 
         </div>
         <script type="text/javascript">
-				TouchSlide({
-					slideCell:"#focus",
-					titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
-					mainCell:".bd ul",
-					effect:"left",
-					autoPlay:true,//自动播放
-					autoPage:true, //自动分页
-					switchLoad:"_src" //切换加载，真实图片路径为"_src"
-				});
+            TouchSlide({
+                slideCell: "#focus",
+                titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+                mainCell: ".bd ul",
+                effect: "left",
+                autoPlay: true,//自动播放
+                autoPage: true, //自动分页
+                switchLoad: "_src" //切换加载，真实图片路径为"_src"
+            });
         </script>
     </div>
     <div class="jiag02">
-        <h3>CHANODUG PORTABLE AIR BED</h3>
+        <h3>$!{g.name}</h3>
         <p class="pp01">
-            High-cost, stylish small apartment sofa combination, the living room combination
+            $!{desc}
+            <!--High-cost, stylish small apartment sofa combination, the living room combination
             fabric sofa, removable wash cloth sofa, factory direct 1, genuine protection 2, a
-            variety of colors optional 3, solid deformation, comfortable and flexible 4,
+            variety of colors optional 3, solid deformation, comfortable and flexible 4,-->
         </p>
         <div class="clear"></div>
-        <h4 style="line-height:40px; height:30px; font-size:20px; margin-bottom:0px;">P 198.00</h4>
-        <span style="line-height:30px;"> P <s>1098.00</s></span>
+        <h4 style="line-height:40px; height:30px; font-size:20px; margin-bottom:0px;">P $!{g.new_price}</h4>
+        <span style="line-height:30px;"> P <s>$!{g.old_price}</s></span>
         <div class="clear"></div>
 
         <div class="clear"></div>
@@ -120,9 +123,9 @@ cursorborderradius:"5px"
 
                 <h3 class="co" style="float:left;">QTY</h3>
                 <div class="shu2xx">
-                    <input name="" type="button" class="jian1" value="-" />
-                    <input name="" type="text" class="text8" value="1" />
-                    <input name="" type="button" class="jian1" value="+" />
+                    <input name="" type="button" class="jian1" value="-" onclick="jian()" />
+                    <input id="count" type="text" class="text8" value="1" />
+                    <input name="" type="button" class="jian1" value="+" onclick="add()" />
                     <div class="clear"></div>
                 </div>
             </ul>
@@ -143,6 +146,21 @@ cursorborderradius:"5px"
     <div class="beij"></div>
 
     #parse("eng/_foot.html")
+    <script type="text/javascript">
+        function jian() {
+            var count = $("#count").val();
+            if (count > 1)
+                count = parseInt(count) - 1;
+            else
+            { alert("不能再少了"); return; }
+            $("#count").val(count);
+        }
+        function add() {
+            var count = $("#count").val();
+            count = parseInt(count) + 1;
+            $("#count").val(count);
+        }
 
+    </script>
 </body>
 </html>

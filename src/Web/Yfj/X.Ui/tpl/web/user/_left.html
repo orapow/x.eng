@@ -4,14 +4,40 @@
         <li><a href="/web/user/index.html">MY ACCOUNT</a></li>
         <li><a href="/web/user/change_pwd.html">CHANGE PASSWORD</a></li>
         <li><a href="/web/order/list.html">ORDER HISTORY</a></li>
-        <li><a href="#">Exit</a></li>
+        <li><a href="javascript:;" id="signOut" onclick="signOut()">Exit</a></li>
     </ul>
     <script>
-              $(function(){
-			        $(".ul01 li a").hover(function(){
-						$(this).addClass("xx").parent("li").siblings("li").children("a").removeClass("xx");
-				    });
-	            });
+        $(function () {
+            $(".ul01 li a").hover(function () {
+                $(this).addClass("xx").parent("li").siblings("li").children("a").removeClass("xx");
+            });
+        });
+
+        function signOut() {
+            if (!confirm("是否确定退出当前账号?"))
+                return;
+            x.doapi("eng.logout", {}, function (d) {
+                if (!d.issucc) return;
+                document.location.href = "/web/index.html";
+            });
+        }
+
+        function deleteCookie(name) {
+            var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+            var cval = getCookie(name);
+            if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+        }
+
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return unescape(arr[2]);
+            else {
+                alert("no cookie get");
+                return null;
+            }
+        }
     </script>
 
 </div>

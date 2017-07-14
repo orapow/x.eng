@@ -253,6 +253,8 @@
       <Column Name="country" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="city" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="pro_id" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="pro_answer" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="uid" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="pwd" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
       <Column Name="invter" Type="System.Int64" DbType="BigInt" CanBeNull="true" />

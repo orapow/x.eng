@@ -24,8 +24,8 @@
             </li>
             <li>
                 <span><i style="color:#dc3535;">*</i>GENDER</span>
-                <input type="radio" class="txt02" name="hh" value="0" /><p>MALE</p>
-                <input type="radio" class="txt02" name="hh" value="1" /><p>FEMALE</p>
+                <input type="radio" class="txt02" name="hh" value="1" /><p>MALE</p>
+                <input type="radio" class="txt02" name="hh" value="2" /><p>FEMALE</p>
                 <div class="clear"></div>
             </li>
             <li>
@@ -66,12 +66,12 @@
         <div class="clear"></div>
     </div>
 
-#parse("_foot.html")
+    #parse("_foot.html")
 
     <script type="text/javascript">
         function register() {
             var name = $("#bt_name").val();
-            if (!name) { alert("name不能为空"); return;}
+            if (!name) { alert("name不能为空"); return; }
             var sex = $('input:radio[name="hh"]:checked').val();
             if (!sex) { alert("sex不能为空"); return; }
             var Phone_tel = $("#CELLPHONE_tel").val();
@@ -84,18 +84,18 @@
             if (!pwd) { alert("pwd不能为空"); return; }
             var pwds = $("#id_2ndPwd").val();
             if (!pwds) { alert("pwds不能为空"); return; }
-            if (pwd != pwds) { alert("密码不一致"); return;}
+            if (pwd != pwds) { alert("密码不一致"); return; }
             x.doapi("web.reg", { name: name, sex: sex, Phone_tel: Phone_tel, WhatsApp_tel: WhatsApp_tel, email: email, pwd: pwd },
                 function (d) {
-                if (!d.issucc) return;
-                document.location.href = "/web/user/index.html";
-            });
-            
+                    if (!d.issucc) return;
+                    document.location.href = "/web/user/index.html";
+                });
+
         }
+
     </script>
 </body>
 </html>
-
 
 
 

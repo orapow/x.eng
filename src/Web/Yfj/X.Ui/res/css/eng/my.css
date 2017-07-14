@@ -21,7 +21,11 @@ textarea {  -webkit-appearance: none;}
 .comtop { width: 100%; height: 50px; line-height: 50px;     position: fixed; top:0px; background:#ffffff;  z-index:999; }
 .comtop img { position:absolute; left:10px; top:14px; height:24px;}
 
-.comtop01 { width: 100%; height: 50px; line-height: 50px; text-align:center; font-size:18px; color:#333;     position: fixed; top:0px;  z-index:999;background:url(/img/eng/sg_03.png)#ffffff 12px no-repeat; background-size:10px; border-bottom:1px solid #CCC;   }
+.comtop01 { width: 100%; height: 50px; line-height: 50px; text-align:center; font-size:18px; color:#333;     position: fixed; top:0px;  z-index:999;background-color:#ffffff; background-size:10px; border-bottom:1px solid #CCC;   }
+
+.com{display:block}
+.com { position: absolute;left:12px; top:0px; height: 50px ;}
+input.return{ background: url(/img/eng/sg_03.png)  no-repeat center; background-size:10px; width: 30px; height: 21px; cursor: pointer; position: relative; top:15px;}
 
 .comtop2{ display:block;}	
 .comtop2 { position: absolute; right: 10px; top:0px; height: 50px; }

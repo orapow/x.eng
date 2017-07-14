@@ -19,6 +19,8 @@
 
     </div>
     <!--手机版的banner图片-->
+    #set($al=$T.GetAds(1))
+    #if($al.count>0)
     <div id="content">
         <div id="focus" class="focus">
             <div class="hd">
@@ -26,10 +28,12 @@
             </div>
             <div class="bd">
                 <ul>
+                    #foreach($p in $al)
+                    <li><a href="${p.url}"><img src="$p.pic" /></a></li>
+                    <!--<li><a href="#"><img src="/img/eng/dg_06.png" /></a></li>
                     <li><a href="#"><img src="/img/eng/dg_06.png" /></a></li>
-                    <li><a href="#"><img src="/img/eng/dg_06.png" /></a></li>
-                    <li><a href="#"><img src="/img/eng/dg_06.png" /></a></li>
-                    <li><a href="#"><img src="/img/eng/dg_06.png" /></a></li>
+                    <li><a href="#"><img src="/img/eng/dg_06.png" /></a></li>-->
+                    #end
                 </ul>
             </div>
 
@@ -46,6 +50,7 @@
             });
         </script>
     </div>
+    #end
     <!--手机版的banner图片-->
     <div class="lanmu">
         <ul>
@@ -126,5 +131,20 @@
     </div>
 
     #parse("eng/_foot.html")
+    <script type="text/javascript" src="/js/x.js"></script>
+    <script type="text/javascript">
+        function signOut() {
+            if ("$!{cu}" == "") {
+                document.location.href = "/eng/login.html";
+                return;
+            }
+            if (!confirm("是否确定退出当前账号?"))
+                return;
+            x.doapi("eng.logout", {}, function (d) {
+                if (!d.issucc) return;
+                document.location.href = "/eng/index.html";
+            });
+        }
+    </script>
 </body>
 </html>

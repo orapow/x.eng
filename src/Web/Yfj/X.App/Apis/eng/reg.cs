@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using X.Core.Utility;
 using X.Data;
+using X.Web;
 using X.Web.Com;
 
 namespace X.App.Apis.eng {
@@ -28,6 +29,7 @@ namespace X.App.Apis.eng {
         protected override XResp Execute()
         {
             var user = new x_user();
+
             user.name = name;
             user.sex = sex;
             user.ptel = Phone_tel;
@@ -46,6 +48,7 @@ namespace X.App.Apis.eng {
             Context.Response.SetCookie(new HttpCookie("cu_key", cu.ukey));//保存cookie状态
 
             return new XResp();
+
         }
 
     }

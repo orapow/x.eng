@@ -23,10 +23,9 @@ namespace X.App.Views.eng.goods {
             var s1 = gd.x_sale.FirstOrDefault(o => o.etime > DateTime.Now);
             if (s1 != null)
                 Context.Response.Redirect("/eng/goods/sale_detail-" + s1.sale_id + ".html");
-
+            dict.Add("desc", Context.Server.HtmlDecode(gd.desc));
             dict.Add("g", gd);
             dict.Add("pics", gd.imgs.Split(',').ToList());
-            dict.Add("desc", Context.Server.HtmlEncode(gd.desc));
         }
 
     }

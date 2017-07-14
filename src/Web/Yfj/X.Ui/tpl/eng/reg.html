@@ -8,13 +8,16 @@
 <body style="background:#f5f5f5;">
 
     <div class="comtop01">
+        <div class="com">
+            <input name="" type="button" class="return" onclick="history.go(-1)" />
+        </div>
         CREATE AN ACCOUNT
         #parse("eng/_topbtn.html")
     </div>
     <div class="min01">
         <ul class="ul03">
             <li>
-                <span><i style="color:#dc3535;">*</i>NAME</span><input type="text" class="text01" placeholder="YOUR NAME" id="uname" />
+                <span><i style="color:#dc3535;">*</i>NAME</span><input type="text" class="text01" placeholder="YOUR NAME" id="uname" onchange="checkName(this.value)" />
                 <div class="clear"></div>
             </li>
             <li>
@@ -37,9 +40,9 @@
                 <select id="ct1" class="text01" onchange="loadcity(this.value)">
                     <option value="">COUNTRY</option>
                     #foreach($c in $cs)
-                    
+
                     <option value="$c.value">$c.name</option>
-                    
+
                     #end
                 </select>
                 <select id="ct2" class="text01 street" style="margin-top:20px;">
@@ -90,7 +93,7 @@
             var name = $("#uname").val();
             if (!name) { alert("用户名不能为空!"); return }
             var sex = $("#select option:selected").val();
-            var country=$("#ct1 option:selected").val();;
+            var country = $("#ct1 option:selected").val();
             var city = $("#ct2 option:selected").val()
             var Phone_tel = $("#P_tel").val();
             if (!Phone_tel) { alert("手机号码不能为空!"); return }
@@ -104,11 +107,16 @@
             if (!pwds) { alert("请输入确认密码!"); return; }
             if (pwd != pwds) { alert("密码不一致!"); return }
 
-            x.doapi("eng.reg", { name: name, sex: sex, country:country,city:city, Phone_tel: Phone_tel, WhatsApp_tel: WhatsApp_tel, email: email, pwd: pwd },
-                function (d) {
-                    if (!d.issucc) return;
-                    document.location.href = "/eng/user/index.html";
-                })
+
+            x.doapi("eng.checkname", { name: name }, function (d) {
+                if (!d.issucc) return;
+                x.doapi("eng.reg", { name: name, sex: sex, country: country, city: city, Phone_tel: Phone_tel, WhatsApp_tel: WhatsApp_tel, email: email, pwd: pwd },
+                   function (d) {
+                       if (!d.issucc) return;
+                       document.location.href = "/eng/user/index.html";
+                   })
+            });
+
 
         };
 
@@ -120,6 +128,11 @@
                     var ct = d.items[i];
                     $(".street").append('<option value="' + ct.value + '" ' + (ct.name == "$ent.zhen" ? "selected='selected'" : "") + '>' + ct.name + '</option>');
                 }
+            });
+        }
+
+        function checkName(name) {
+            x.doapi("eng.checkname", { name: name }, function (d) {
             });
         }
 

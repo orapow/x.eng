@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    #parse("_top.html")
+    #parse("web/_top.html")
  <div class="min02">
         <h2>ENTER INFORMATION TO LOG IN</h2>
 
@@ -35,7 +35,7 @@
         </ul>
         <div class="clear"></div>
     </div>
-    #parse("_foot.html")
+    #parse("web/_foot.html")
 
     <script type="text/javascript">
         function passwordLogin() {
@@ -43,7 +43,7 @@
             if(!name){(alert("账号不能为空")); return;};
             var pwd = $("#bt_pwd").val();
             if (!pwd) { alert("密码不能为空"); return;}
-            x.doapi("web.login", { name: name, pwd: pwd }, function (d) {
+            x.doapi("eng.login", { name: name, pwd: pwd }, function (d) {
                 if (!d.issucc) return;
                 document.location.href = "/web/user/index.html";
             });
